@@ -21,4 +21,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  Levels: []
+  Levels:
+  - PoolList:
+    - RequiredObjectCount: 10
+    - RequiredObjectCount: 20
+    - RequiredObjectCount: 30
+  - PoolList: []
+  - PoolList: []

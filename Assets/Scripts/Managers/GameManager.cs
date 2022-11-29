@@ -1,4 +1,5 @@
 using Enums;
+using Signals;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour

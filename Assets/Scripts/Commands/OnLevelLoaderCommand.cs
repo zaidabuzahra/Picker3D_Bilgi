@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Interfaces;
+﻿using Interfaces;
 using UnityEngine;
 
 namespace Commands
 {
     public class OnLevelLoaderCommand : ICommand
     {
-        private Transform _levelHolder;
+        private readonly Transform _levelHolder;
 
         public OnLevelLoaderCommand(Transform levelHolder)
         {
@@ -23,7 +18,7 @@ namespace Commands
 
         public void Execute(int levelID)
         {
-            UnityEngine.Object.Instantiate(Resources.Load<GameObject>($"Prefabs/LevelPrefabs/level{levelID}"), _levelHolder);
+            Object.Instantiate(Resources.Load<GameObject>($"Prefabs/LevelPrefabs/level{levelID}"), _levelHolder);
         }
     }
 }
