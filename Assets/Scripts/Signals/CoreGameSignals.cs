@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Enums;
 
 public class CoreGameSignals : MonoBehaviour
 {

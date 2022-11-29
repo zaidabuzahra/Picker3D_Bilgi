@@ -1,6 +1,9 @@
-public enum GameState
+namespace Enums
 {
-    Idle, 
-    Moving,
-    Final
+    public enum GameState
+    {
+        Idle,
+        Moving,
+        Final
+    }
 }
