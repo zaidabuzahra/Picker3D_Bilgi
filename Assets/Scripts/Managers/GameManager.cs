@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     #region SeriliezedVariables
 
     [SerializeField] private GameState states;
+
     #endregion
+
     #endregion
 
     private void Awake()

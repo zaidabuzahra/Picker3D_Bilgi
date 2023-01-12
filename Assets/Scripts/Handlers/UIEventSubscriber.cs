@@ -1,3 +1,4 @@
+using Enums;
 using Managers;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class UIEventSubscriber : MonoBehaviour
 
     #region Serialized Variables
 
-    [SerializeField] private UIEventSubscitionTypes type;
+    [SerializeField] private UIEventSubscriptionTypes type;
     [SerializeField] private Button button;
 
     #endregion
@@ -41,17 +42,17 @@ public class UIEventSubscriber : MonoBehaviour
     {
         switch (type)
         {
-            case UIEventSubscitionTypes.OnPlay:
+            case UIEventSubscriptionTypes.OnPlay:
                 {
                     button.onClick.AddListener(_manager.Play);
                     break;
                 }
-            case UIEventSubscitionTypes.OnNextLevel:
+            case UIEventSubscriptionTypes.OnNextLevel:
                 {
                     button.onClick.AddListener(_manager.NextLevel);
                     break;
                 }
-            case UIEventSubscitionTypes.OnRestartLevel:
+            case UIEventSubscriptionTypes.OnRestartLevel:
                 {
                     button.onClick.AddListener(_manager.RestartLevel);
                     break;
@@ -63,17 +64,17 @@ public class UIEventSubscriber : MonoBehaviour
     {
         switch (type)
         {
-            case UIEventSubscitionTypes.OnPlay:
+            case UIEventSubscriptionTypes.OnPlay:
                 {
                     button.onClick.RemoveListener(_manager.Play);
                     break;
                 }
-            case UIEventSubscitionTypes.OnNextLevel:
+            case UIEventSubscriptionTypes.OnNextLevel:
                 {
                     button.onClick.RemoveListener(_manager.NextLevel);
                     break;
                 }
-            case UIEventSubscitionTypes.OnRestartLevel:
+            case UIEventSubscriptionTypes.OnRestartLevel:
                 {
                     button.onClick.RemoveListener(_manager.RestartLevel);
                     break;
