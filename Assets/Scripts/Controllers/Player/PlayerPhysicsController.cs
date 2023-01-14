@@ -3,6 +3,7 @@ using DG.Tweening;
 using Managers;
 using Signals;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Controllers.Player
 {
@@ -12,9 +13,18 @@ namespace Controllers.Player
 
         #region Serialized Variables
 
+        [SerializeField] private List<PoolController> poolController = new List<PoolController>();
         [SerializeField] private PlayerManager manager;
         [SerializeField] private new Collider collider;
         [SerializeField] private new Rigidbody rigidbody;
+
+        #endregion
+
+        #region Public&Private Variables
+
+        private byte LevelID;
+        public int TotalWhiteCount;
+        public int TotalRedCount;
 
         #endregion
 
@@ -33,8 +43,11 @@ namespace Controllers.Player
                         .TakeStageResult(manager.StageValue);
                     if (result)
                     {
+                        TotalWhiteCount += poolController[LevelID]._collectedCount;
+                        poolController[LevelID]._collectedCount = 0;
                         CoreGameSignals.Instance.onStageAreaSuccessful?.Invoke(manager.StageValue);
                         InputSignals.Instance.onEnableInput?.Invoke();
+                        LevelID++;
                     }
                     else CoreGameSignals.Instance.onLevelFailed?.Invoke();
                 });

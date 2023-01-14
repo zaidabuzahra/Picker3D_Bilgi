@@ -11,6 +11,7 @@ namespace Controllers.Pool
 {
     public class PoolController : MonoBehaviour
     {
+
         #region Self Variables
 
         #region Serialized Variables
@@ -25,7 +26,7 @@ namespace Controllers.Pool
         #region Private Variables
 
         [ShowInInspector] private PoolData _data;
-        [ShowInInspector] private byte _collectedCount;
+        [ShowInInspector] public byte _collectedCount;
 
         #endregion
 
@@ -115,18 +116,6 @@ namespace Controllers.Pool
         private void IncreaseCollectedCount()
         {
             _collectedCount++;
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (!other.CompareTag("Collectable")) return;
-            DecreaseTheCollectedCount();
-            SetCollectedCountToText();
-        }
-
-        private void DecreaseTheCollectedCount()
-        {
-            _collectedCount--;
         }
     }
 }
