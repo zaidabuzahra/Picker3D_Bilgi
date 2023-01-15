@@ -6,7 +6,7 @@ using Signals;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-
+using Controllers.Player;
 namespace Controllers.Pool
 {
     public class PoolController : MonoBehaviour
@@ -20,6 +20,7 @@ namespace Controllers.Pool
         [SerializeField] private TextMeshPro poolText;
         [SerializeField] private byte stageID;
         [SerializeField] private new Renderer renderer;
+        [SerializeField] private PlayerPhysicsController playerPhysicsController;
 
         #endregion
 
@@ -110,7 +111,9 @@ namespace Controllers.Pool
 
         private void SetCollectedCountToText()
         {
-            poolText.text = $"{_collectedCount}/{_data.RequiredObjectCount}";
+            if (playerPhysicsController.bChangeCountBalls) poolText.text = $"{_collectedCount}/{_data.RequiredObjectCount}";
+
+            else poolText.text = $"{_collectedCount}";
         }
 
         private void IncreaseCollectedCount()

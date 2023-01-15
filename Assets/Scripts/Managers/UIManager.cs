@@ -1,6 +1,9 @@
 using Enums;
 using Signals;
 using UnityEngine;
+using TMPro;
+using Controllers.Pool;
+using System.Collections.Generic;
 
 namespace Managers
 {
@@ -14,9 +17,13 @@ namespace Managers
 
         #region Serialized Variables
 
+        [SerializeField] InputManager inputManager;
+
         #endregion
 
         #region Private Variables
+
+        private int LevelID;
 
         #endregion
 

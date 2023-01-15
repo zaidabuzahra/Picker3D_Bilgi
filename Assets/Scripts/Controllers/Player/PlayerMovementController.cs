@@ -5,6 +5,9 @@ using Sirenix.OdinInspector;
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using Signals;
+
+using Controllers.Player;
 
 namespace Controllers.Player
 {
@@ -17,6 +20,7 @@ namespace Controllers.Player
         [SerializeField] private PlayerManager manager;
         [SerializeField] private new Rigidbody rigidbody;
         [SerializeField] private new Collider collider;
+        [SerializeField] private PlayerPhysicsController playerPhysicsController;
 
         #endregion
 
@@ -101,6 +105,42 @@ namespace Controllers.Player
             StopPlayer();
             _isReadyToMove = false;
             _isReadyToPlay = false;
+        }
+
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            CoreGameSignals.Instance.onSpeedPlayer += ChangeSpeed;
+            CoreGameSignals.Instance.onCalculateDifference += OnCalculateDifference;
+        }    
+
+        private void UnSubscribeEvents()
+        {
+            CoreGameSignals.Instance.onSpeedPlayer -= ChangeSpeed;
+            CoreGameSignals.Instance.onCalculateDifference -= OnCalculateDifference;
+        }
+        private void OnCalculateDifference()
+        {
+            playerPhysicsController.DifferenceTotal = playerPhysicsController.TotalWhiteCount - playerPhysicsController.TotalRedCount;
+            if (playerPhysicsController.DifferenceTotal <= 0)
+            {
+                playerPhysicsController.DifferenceTotal = 0;
+            }
+            Debug.Log(playerPhysicsController.DifferenceTotal);
+        }
+
+        private void ChangeSpeed()
+        {
+            _data.ForwardSpeed += 7.5f;
         }
     }
 }
